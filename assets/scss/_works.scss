@@ -1,0 +1,134 @@
+.works {
+
+    &__inner {
+        padding: 100px 0 184px 0;
+        @include flex-between;
+        flex-wrap: wrap
+    }
+
+    &__title {
+        @include font-title;
+        font-size: 48px;
+    }
+
+    &__btn {
+        background-color: $white;
+        font-family: $font-text;
+        font-size: 14px;
+        text-transform: uppercase;
+        color: $black;
+        letter-spacing: 5px;
+        border: 2px solid $black;
+        padding: 13px 40px;
+        cursor: pointer;
+        transition: color .2s linear, background-color .2s linear;
+
+        &:hover {
+            background-color: $black;
+            color: $white;
+        }
+    }
+
+    &__content {
+        margin-top: 80px;
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 30px;
+    }
+
+    &__item {
+        position: relative;
+
+        &::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+            background-color: $white;
+            opacity: 0;
+
+            transition: opacity .2s linear;
+        }
+
+        &:hover::after {
+            opacity: .7;
+        }
+    }
+
+    &__item:hover &__text {
+        color: $black;
+    }
+
+    &__img {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+
+    &__text {
+        @include font-title;
+        color: $white;
+        font-size: 32px;
+        max-width: 170px;
+        position: absolute;
+        bottom: 32px;
+        left: 10%;
+        z-index: 5;
+        transition: color .2s linear;
+    }
+}
+
+@media (max-width: 1200px) {
+    .works {
+        &__text {
+            font-size: 24px;
+            bottom: 26px;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .works {
+
+        &__content {
+            gap: 24px;
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+    }
+}
+
+@media (max-width: 375px) {
+    .works {
+
+        &__inner {      
+            justify-content: center;
+        }
+
+        &__title {
+            text-align: center;
+            font-size: 32px;
+        }
+
+        &__btn {
+            margin-top: 34px;
+            order: 3;
+        }
+
+        &__content {
+            margin-top: 48px;
+            order: 2;
+            grid-template-columns: repeat(1, 1fr);
+        }
+
+        &__text {
+            font-size: 24px;
+            left: 20px;
+            bottom: 20px;
+        }
+    }
+}

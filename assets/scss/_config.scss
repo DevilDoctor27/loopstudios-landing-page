@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Alata&family=Josefin+Sans:wght@300&display=swap');
+
+$padding-top: 64px;
+
+$font-title: 'Josefin Sans', sans-serif;
+$font-text: 'Alata', sans-serif;
+
+$white: hsl(0, 0%, 100%);
+$black: hsl(0, 0%, 0%);
+$gray: hsl(0, 0%, 55%);
+$dark-gray: hsl(0, 0%, 41%);
+
+@mixin font-title {
+    font-family: $font-title;
+    text-transform: uppercase;
+    font-weight: 300;
+}
+
+@mixin font-text {
+    font-family: $font-text;
+    font-weight: 400;
+    font-size: 15px;
+}
+
+@mixin flex-between {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+@mixin link {
+    @include font-text;
+    display: inline-block;
+    position: relative;
+    color: $white;
+    text-decoration: none;
+    &::after {
+        @include link-after;
+    }
+
+    &:hover::after {
+        opacity: 1;
+    }
+}
+
+@mixin link-after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: block;
+    width: 50%;
+    height: 2px;
+    background-color: $white;
+    opacity: 0;
+    transition: opacity .2s linear;
+}
